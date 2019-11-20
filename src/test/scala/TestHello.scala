@@ -25,5 +25,8 @@ class TestHello extends FunSuite with DiagrammedAssertions {
   test("isPalin() positive") {assert(Functions.isPalin(palindrome))}
   test("isPalin() positive2") {assert(Functions.isPalin(palindrome2))}
 
+  test("pack_elements()") {assert(Functions.pack_elements(palindrome2) == List(List(1),List(2),List(3,3),List(2),List(1)))}
+  test("encode()") {assert(Functions.encode(palindrome2) == List((1, 1),(1,2),(2,3),(1, 2),(1,1)))}
+
 
 }

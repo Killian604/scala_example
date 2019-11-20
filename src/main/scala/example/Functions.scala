@@ -60,4 +60,15 @@ object Functions {
     else isPalin(ls.slice(1, ls.length-1))
   }
 
+  def pack_elements[A](ls: List[A]): List[List[A]] = {
+    if (ls.isEmpty) List(List())
+    else {
+      val (packed, next) = ls span {_ == ls.head}
+      if (next == Nil) List(packed)
+      else packed :: pack_elements(next)
+    }
+  }
+  def encode[A](ls: List[A]): List[(Int, A)] = {
+    pack_elements(ls) map {e => (e.length, e.head)}
+  }
 }
