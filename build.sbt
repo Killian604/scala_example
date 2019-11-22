@@ -16,6 +16,12 @@ lazy val root = (project in file("."))
   .settings(
     name := "Hello",
     libraryDependencies += scalaTest % Test,  // The % is used to construct and Ivy module ID from strings
+    libraryDependencies ++= Seq(
+      "org.scalactic" %% "scalactic" % "3.0.5",
+      "org.apache.commons" % "commons-math3" % "3.6.1",
+      "com.typesafe.akka" %% "akka-actor" % "2.5.1",
+      "com.typesafe.akka" %% "akka-testkit" % "2.5.1",
+    )
     // update / aggregate := false,
   )
 lazy val core = project

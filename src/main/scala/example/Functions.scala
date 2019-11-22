@@ -78,7 +78,7 @@ object Functions {
   /*Why does the below Right and Left not work?*/
 //  def encodeModifiedSolution[A](ls: List[A]): List[Either[A, (Int, A)]] =
 //    encode(ls) map { t => if (t._1 == 1) Left(t._2) else Right(t) }
-  
+
   def encodeModifiedSolution[A](ls: List[A]): List[Any] =
     encode(ls) map { t => if (t._1 == 1) t._2 else t }
 }
