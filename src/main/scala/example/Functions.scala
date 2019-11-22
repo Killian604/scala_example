@@ -71,4 +71,14 @@ object Functions {
   def encode[A](ls: List[A]): List[(Int, A)] = {
     pack_elements(ls) map {e => (e.length, e.head)}
   }
+
+  def encodeModified[A](ls: List[A]): List[Any] =
+    pack_elements(ls) map {e => {if (e.length == 1) e.head else (e.length, e.head)}}
+
+  /*Why does the below Right and Left not work?*/
+//  def encodeModifiedSolution[A](ls: List[A]): List[Either[A, (Int, A)]] =
+//    encode(ls) map { t => if (t._1 == 1) Left(t._2) else Right(t) }
+  
+  def encodeModifiedSolution[A](ls: List[A]): List[Any] =
+    encode(ls) map { t => if (t._1 == 1) t._2 else t }
 }

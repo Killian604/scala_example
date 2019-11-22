@@ -6,6 +6,7 @@ class TestHello extends FunSuite with DiagrammedAssertions {
   val letters = List('a','b','b','c','c','d','d','d')
   val palindrome = List(1,2,3,4,5,6,5,4,3,2,1)
   val palindrome2 = List(1,2,3,3,2,1)
+  val (multirepeating, multirepeating_solution) = (List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e), List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))
 
   test("Flatten() - Flattening a nested list") {assert(Functions.flatten2(List(0,1,List(10, 11, List(100,101), List(102)))) == List(0,1,10,11,100,101,102))}
   test("last() - Getting last element using LAST") {assert(Functions.last(fib) == 21)}
@@ -27,6 +28,9 @@ class TestHello extends FunSuite with DiagrammedAssertions {
 
   test("pack_elements()") {assert(Functions.pack_elements(palindrome2) == List(List(1),List(2),List(3,3),List(2),List(1)))}
   test("encode()") {assert(Functions.encode(palindrome2) == List((1, 1),(1,2),(2,3),(1, 2),(1,1)))}
-
+  test("encodeModified() 1") {assert(Functions.encodeModified(palindrome2) == List(1,2,(2,3),2,1))}
+  test("encodeModified() 2") {assert(Functions.encodeModified(multirepeating) == List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))}
+  test("encodeModifiedSolution() 1") {assert(Functions.encodeModifiedSolution(palindrome2) == List(1,2,(2,3),2,1))}
+  test(testName="encodeModifiedSolution() 2") {assert(Functions.encodeModifiedSolution(multirepeating) == multirepeating_solution)}
 
 }
