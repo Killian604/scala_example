@@ -81,4 +81,23 @@ object Functions {
 
   def encodeModifiedSolution[A](ls: List[A]): List[Any] =
     encode(ls) map { t => if (t._1 == 1) t._2 else t }
+
+  def decode[B](ls: List[(Int, B)]): List[B] =
+    ls flatMap { e => List.fill(e._1)(e._2) }
+
+  @tailrec
+  def encodeDirect[A](ls: List[A], enc: List[(Int, A)] = List()): List[(Int, A)] =
+    ls match {
+      case Nil => enc
+      case _ =>
+        val (left, right) = ls span (_ == ls.head)
+        encodeDirect(right, enc :+ (left.length, left.head))
+    }
+
+  def encodeDirectSolution[A](ls: List[A]): List[(Int, A)] =
+    if (ls.isEmpty) Nil
+    else {
+      val (packed, next) = ls span { _ == ls.head }
+      (packed.length, packed.head) :: encodeDirectSolution(next)
+    }
 }

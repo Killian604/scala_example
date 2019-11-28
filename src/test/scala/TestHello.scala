@@ -33,4 +33,11 @@ class TestHello extends FunSuite with DiagrammedAssertions {
   test("encodeModifiedSolution() 1") {assert(Functions.encodeModifiedSolution(palindrome2) == List(1,2,(2,3),2,1))}
   test(testName="encodeModifiedSolution() 2") {assert(Functions.encodeModifiedSolution(multirepeating) == multirepeating_solution)}
 
+  test("decode()") {assert(Functions.decode(List((1,1),(2,2),(3,3))) == List(1,2,2,3,3,3))}
+  test("encodeDirect()") {assert(Functions.encodeDirect(palindrome2) == List((1, 1),(1,2),(2,3),(1, 2),(1,1)))}
+  test("encodeDirectSolution()") {assert(Functions.encodeDirectSolution(palindrome2) == List((1, 1),(1,2),(2,3),(1, 2),(1,1)))}
+
+
+
+
 }
