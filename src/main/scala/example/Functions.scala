@@ -100,4 +100,6 @@ object Functions {
       val (packed, next) = ls span { _ == ls.head }
       (packed.length, packed.head) :: encodeDirectSolution(next)
     }
+  def duplicateN[A](n: Int, ls: List[A]): List[A] =
+    ls flatMap {e => List.fill(n)(e)}
 }
