@@ -38,8 +38,12 @@ class TestHello extends FunSuite with DiagrammedAssertions {
   test("encodeDirectSolution()") {assert(Functions.encodeDirectSolution(palindrome2) == List((1, 1),(1,2),(2,3),(1, 2),(1,1)))}
 
   test("duplicateN()") {assert(Functions.duplicateN(3, List(1,2,3)) == List(1,1,1,2,2,2,3,3,3))}
-
-
+  test("slice()") {assert(Functions.slice(3,7,List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) == List('d, 'e, 'f, 'g))}
+  test("rotate()") {assert(Functions.rotate(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) == List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c))}
+  test("rotate() 2") {assert(Functions.rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) == List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i))}
+  test("range()") {assert(Functions.range(4,9) == List(4,5,6,7,8,9))}
+//  scala> range(4, 9)
+//  res0: List[Int] = List(4, 5, 6, 7, 8, 9)
 
 
 }

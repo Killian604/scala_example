@@ -100,6 +100,22 @@ object Functions {
       val (packed, next) = ls span { _ == ls.head }
       (packed.length, packed.head) :: encodeDirectSolution(next)
     }
+
   def duplicateN[A](n: Int, ls: List[A]): List[A] =
-    ls flatMap {e => List.fill(n)(e)}
+    ls flatMap { e => List.fill(n)(e) }
+
+  def slice[A](start: Int, end: Int, ls: List[A]): List[A] =
+    ls slice (start, end)
+
+  def rotate[A](n: Int, ls: List[A]): List[A] = {
+    var n1 = n
+    while (n1 < 0)
+      n1 = n + ls.length
+    val (left,right) = ls splitAt (n1 % ls.length)
+    right ++ left
+  }
+
+  def range(start: Int, end: Int):List[Int] = List.range[Int](start,end+1)
+
+
 }
