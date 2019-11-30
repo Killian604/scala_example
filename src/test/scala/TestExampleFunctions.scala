@@ -1,7 +1,7 @@
 import example.Functions
 import org.scalatest._
 
-class TestHello extends FunSuite with DiagrammedAssertions {
+class TestExampleFunctions extends FunSuite with DiagrammedAssertions {
   val fib = List(1,1,2,3,5,8,13,21)
   val letters = List('a','b','b','c','c','d','d','d')
   val palindrome = List(1,2,3,4,5,6,5,4,3,2,1)
