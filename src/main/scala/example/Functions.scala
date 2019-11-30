@@ -1,5 +1,7 @@
 package example
 
+import java.util.NoSuchElementException
+
 import annotation.tailrec
 
 object Functions {
@@ -117,5 +119,49 @@ object Functions {
 
   def range(start: Int, end: Int):List[Int] = List.range[Int](start,end+1)
 
+  @tailrec
+  def dropNth[A](n: Int, ls: List[A], dropped: List[A]=List()): List[A] = {
+    if (n > ls.length) dropped
+    else {
+      val (left, right) = ls.splitAt(n-1)
+      dropNth(n, right.tail, dropped ++ left)
+    }
+  }
+
+  def split[A](n: Int, ls: List[A]): (List[A], List[A]) = ls splitAt n
+
+  def slice[A](start: Int, end: Int, ls: List[A]): List[A] = {List()}
+
+  def rotate[A](n: Int, ls: List[A]): List[A] = {List()}
+
+  def removeAt[A](n: Int, ls: List[A]): (List[A], A) =
+    ls splitAt n match {
+      case (Nil, _) if n < 0 => throw new NoSuchElementException
+      case (pre, e::post) => (pre ++ post, e)
+  }
+
+  def insertAt[A](x: A, idx: Int, ls: List[A]): List[A] = {
+    val (left, right) = ls splitAt idx
+    left ++ List(x) ++ right
+  }
+  def insertAtSolution[A](e: A, idx: Int, ls:List[A]): List[A] =
+    ls splitAt idx match {
+      case (pre, post) => pre ::: e :: post
+  }
+//  def randomSelect[A](n: Int, ls: List[A]): List[A] = {
+//
+//  }
+
+}
+package arithmetic {
+  class S99Int(val start: Int) {
+    import S99Int._
+    def isPrime: Boolean =
+      (start > 1) && (primes takeWhile { _ <= Math.sqrt(start) } forall { start % _ != 0 })
+  }
+  object S99Int {
+    implicit def int2S99Int(i: Int): S99Int = new S99Int(i)
+    val primes = Stream.cons(2, Stream.from(3, 2) filter { _.isPrime })
+  }
 
 }
